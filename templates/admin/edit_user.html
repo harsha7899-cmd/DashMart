@@ -1,0 +1,23 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Edit User</h1>
+    <form method="POST" action="{{ url_for('edit_user', user_id=user.id) }}">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ user.name }}" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="address">Address</label>
+            <textarea class="form-control" id="address" name="address" rows="3" required>{{ user.address }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Save Changes</button>
+        <a href="{{ url_for('manage_users') }}" class="btn btn-secondary mt-3">Cancel</a>
+    </form>
+</div>
+{% endblock %}

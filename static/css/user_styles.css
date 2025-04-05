@@ -1,0 +1,82 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Navbar styling for the user-side */
+.user-navbar {
+    background-color: #faedbb;
+    border-bottom: 2px solid #b8b8b8; /* Light bottom border for separation */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 10px;
+    padding: 15px;
+}
+
+/* Logo */
+.logo {
+    width: 40px;
+    height: auto;
+    margin-right: 5px;
+}
+
+/* Navbar Items */
+.navbar-nav .nav-link {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #444;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+/* Hover effects */
+.navbar-nav .nav-link:hover {
+    background-color: #f6e9a0;
+    color: rgb(33, 33, 33) !important;
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Responsive Navbar */
+@media (max-width: 767px) {
+    .navbar-toggler {
+        background-color: #ffd900; /* Orange toggle for small screens */
+    }
+}
+
+/* User-specific Link Styles */
+.navbar-nav .nav-item {
+    margin-left: 20px;
+}
+
+.navbar-nav .nav-item:first-child {
+    margin-left: 0;
+}
+
+/* Smooth scrolling for links */
+html, body {
+    scroll-behavior: smooth;
+}
+
+/* Adding a little padding and margin to the content block */
+.container {
+    padding-top: 60px;
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+        padding: 10px;
+    }
+}

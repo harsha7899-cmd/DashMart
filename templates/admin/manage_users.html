@@ -1,0 +1,35 @@
+{% extends 'common/base.html' %}
+{% block content %}
+<div class="container mt-5" style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; border-radius: 8px;">
+    <h1 style="color: #333; font-size: 2em; margin-bottom: 20px;">Manage Users</h1>
+    <table class="table" style="width: 100%; border-collapse: collapse; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+        <thead style="background-color: #007bff; color: white;">
+            <tr>
+                <th style="padding: 12px; text-align: left;">ID</th>
+                <th style="padding: 12px; text-align: left;">Name</th>
+                <th style="padding: 12px; text-align: left;">Email</th>
+                <th style="padding: 12px; text-align: left;">Address</th>
+                <th style="padding: 12px; text-align: center;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr style="background-color: #fff; border-bottom: 1px solid #ddd;">
+                <td style="padding: 12px; text-align: left;">{{ user.id }}</td>
+                <td style="padding: 12px; text-align: left;">{{ user.name }}</td>
+                <td style="padding: 12px; text-align: left;">{{ user.email }}</td>
+                <td style="padding: 12px; text-align: left;">{{ user.address }}</td>
+                <td style="padding: 12px; text-align: center;">
+                    <a href="{{ url_for('edit_user', user_id=user.id) }}" class="btn btn-primary" style="padding: 8px 16px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px; transition: background-color 0.3s ease;">
+                        Edit
+                    </a>
+                    <a href="{{ url_for('delete_user', user_id=user.id) }}" class="btn btn-danger" style="padding: 8px 16px; background-color: #dc3545; color: white; text-decoration: none; border-radius: 4px; margin-left: 10px; transition: background-color 0.3s ease;">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

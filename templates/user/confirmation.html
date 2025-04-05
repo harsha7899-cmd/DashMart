@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .order-confirmation {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        h2 {
+            color: #4CAF50;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #f9f9f9;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        strong {
+            color: #333;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        a:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .order-confirmation {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            a {
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Order Confirmation</h1>
+    </header>
+    <div class="order-confirmation">
+        <h2>Thank you for your order, {{ user.first_name }}!</h2>
+        <p>Your order has been successfully confirmed. We will begin processing it shortly.</p>
+
+        <h3>Order Details:</h3>
+        <ul>
+            {% for order in orders %}
+            <li>
+                <strong>Product:</strong> {{ order.product.name }} <br>
+                <strong>Quantity:</strong> {{ order.quantity }} <br>
+                <strong>Price per Item:</strong> ₹{{ order.product.price }} <br>
+                <strong>Total:</strong> ₹{{ order.total_price }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <p><strong>Shipping Address:</strong> {{ address }}</p>
+        <p><strong>Payment Method:</strong> {{ payment }}</p>
+
+        <p>If you have any questions, please don't hesitate to contact our support team.</p>
+
+        <a href="{{ url_for('home') }}">Back to Home</a>
+    </div>
+
+    <footer style="display: flex; flex-flow: row wrap; padding: 30px 30px 20px 30px; color: #2f2f2f; background-color: #fff; border-top: 1px solid #e5e5e5;">
+        <div style="margin-right: 1.25em; margin-bottom: 2em;">
+            <h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; padding-top: 0.3cm;">DashMart</h3>
+            <h2 style="margin-top: 1.3em; font-size: 15px; font-weight: 400;">Contact</h2>
+            <address style="font-style: normal; color: #999;">
+                Holiday Village Road, Vajarahalli Village,<br> Mallasandra, off, Kanakapura Rd,<br> Bengaluru, Karnataka 560109<br>
+                <a style="display: flex; align-items: center; justify-content: center; height: 36px; max-width: max-content; background-color: rgba(255, 222, 103, 0.429); border-radius: 100px; color: #2f2f2f; line-height: 0; margin: 0.6em 0; font-size: 1rem; padding: 0 1.3em; text-decoration: none;" href="mailto:example@gmail.com">Email Us</a>
+            </address>
+        </div>
+    
+        <ul style="list-style: none; padding-left: 0; display: flex; flex-flow: row wrap; flex: 1 50%; margin-right: 1.25em;">
+            <li style="flex: 1; margin-right: 1.25em;">
+                <h2 style="font-weight: 400; font-size: 15px;">Media</h2>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li><a style="color: #999; text-decoration: none; line-height: 2em;" href="#">Online</a></li>
+                    <li><a style="color: #999; text-decoration: none; line-height: 2em;" href="#">Print</a></li>
+                    <li><a style="color: #999; text-decoration: none; line-height: 2em;" href="#">Alternative Ads</a></li>
+                </ul>
+            </li>
+    
+            <li style="flex: 1; margin-right: 1.25em;">
+                <h2 style="font-weight: 400; font-size: 15px;">Shortcuts</h2>
+                <ul style="list-style: none; padding-left: 0; column-count: 2; column-gap: 1.25em;">
+                    <li><a style="color: #999; text-decoration: none; line-height: 2em;" href="#">Home</a></li>
+                    <li><a style="color: #999; text-decoration: none; line-height: 2em;" href="#">Products</a></li>
+                    <li><a style="color: #999; text-decoration: none; line-height: 2em;" href="#">My Orders</a></li>
+                    <li><a style="color: #999; text-decoration: none; line-height: 2em;" href="#">Cart</a></li>
+                    <li><a style="color: #999; text-decoration: none; line-height: 2em;" href="#">
+                        About</a></li>
+                    <li><a style="color: #999; text-decoration: none; line-height: 2em;" href="#">Contact</a></li>
+                </ul>
+            </li><br>
+    
+            <div class="legal" style="display: flex;
+            flex-wrap: wrap;
+            color: #999; align-content: last baseline;">
+                <p>&copy;Copyright 2014-2027 by Refsnes Data 2024 DashMart. All rights reserved.</p>
+                
+                
+              </div>
+            </footer>
+</body>
+</html>

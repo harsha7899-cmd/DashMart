@@ -1,0 +1,32 @@
+{% extends "common/base.html" %}
+
+{% block content %}
+<div class="container" style="max-width: 1200px; margin: auto; padding: 20px; font-family: Arial, sans-serif;">
+    <h2 class="text-center mb-4" style="color: #eebe21; font-weight: bold; margin-bottom: 30px;">Admin Dashboard</h2>
+    <div class="row text-center" style="display: flex; justify-content: space-between; gap: 20px;">
+        <div class="col-md-4 mb-3" style="flex: 1;">
+            <div class="card p-4" style="background: #f8eec2; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px;">
+                <h4 style="color: #333; margin-bottom: 10px;">Total Users</h4>
+                <p style="font-size: 24px; font-weight: bold; color: #eebe21;">{{ user_count }}</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3" style="flex: 1;">
+            <div class="card p-4" style="background: #f8eec2; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px;">
+                <h4 style="color: #333; margin-bottom: 10px;">Total Products</h4>
+                <p style="font-size: 24px; font-weight: bold; color: #eebe21;">{{ product_count }}</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3" style="flex: 1;">
+            <div class="card p-4" style="background: #f8eec2; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px;">
+                <h4 style="color: #333; margin-bottom: 10px;">Total Orders</h4>
+                <p style="font-size: 24px; font-weight: bold; color: #eebe21;">{{ order_count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="text-center" style="margin-top: 30px;">
+        <a href="{{ url_for('manage_users') }}" class="btn btn-secondary m-2" style="background: #eeda21; color: #5b5b5b; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-size: 16px;">Manage Users</a>
+        <a href="{{ url_for('manage_products') }}" class="btn btn-secondary m-2" style="background: #eeda21; color: #5b5b5b; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-size: 16px;">Manage Products</a>
+        <a href="{{ url_for('sales_report') }}" class="btn btn-secondary m-2" style="background: #eeda21; color: #5b5b5b; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-size: 16px;">View Sales Report</a>
+    </div>
+</div>
+{% endblock %}

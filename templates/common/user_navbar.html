@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Portal - DashMart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user_styles.css') }}">
+
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background for better contrast */
+        }
+
+        .user-navbar {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for navbar */
+        }
+
+        .nav-link {
+            position: relative; /* Positioning for the hover effect */
+            color: #007bff; /* Bootstrap primary color */
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+
+        .nav-link:hover {
+            color: #2e2e2e; /* Darker shade on hover */
+        }
+
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #272727; /* Line color */
+            position: absolute;
+            left: 0;
+            bottom: -5px; /* Positioning the line below the link */
+            transform: scaleX(0); /* Initially hidden */
+            transition: transform 0.3s ease; /* Smooth transition for the line */
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1); /* Show the line on hover */
+        }
+
+        .container {
+            background-color: #ffeba0; /* White background for content */
+            border-radius: 8px; /* Rounded corners */
+            padding: 20px; /* Padding for content */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for content block */
+        }
+
+        .logo {
+            transition: transform 0.3s ease; /* Smooth logo transition */
+        }
+
+        .logo:hover {
+            transform: scale(1.05); /* Slightly enlarge logo on hover */
+        }
+    </style>
+</head>
+<body>
+
+  <!-- User Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light user-navbar" style="background-color: #ffeba0;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ url_for('user_login') }}">
+        <img src="{{ url_for('static', filename='images/dashmartlogo.png'  ) }}"  alt="DashMart Logo" class="logo" height="15" width="15">
+      </a>
+      <h4 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; padding-top: 0.3cm;">DashMart</h4>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#userNavbar" aria-controls="userNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="userNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('home') }}">Products</a>
+          </li>
+    
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('my_orders') }}">My Orders</a>
+          </li>
+        
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('cart') }}">Cart</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content Block -->
+  <div class="container mt-5">
+    {% block content %}{% endblock %}
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
